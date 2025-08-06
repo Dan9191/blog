@@ -18,13 +18,19 @@ public class ShortArticle {
     private List<TagDto> tags;
     private ZonedDateTime createdAt;
 
-    // Можно добавить статический метод-конвертер из Entity
+    /**
+     * Конвертор
+     *
+     * @param article
+     * @return
+     */
     public static ShortArticle fromEntity(Article article) {
         ShortArticle dto = new ShortArticle();
         dto.setId(article.getId());
         dto.setMainPicture(article.getMainPicture());
         dto.setTitle(article.getTitle());
         dto.setDescription(article.getDescription());
+        dto.setCreatedAt(article.getCreatedAt());
         dto.setTags(article.getTags().stream()
                 .map(TagDto::fromEntity)
                 .toList());

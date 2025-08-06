@@ -87,17 +87,7 @@ public class ArticleService {
 
         return new PageImpl<>(
                 articles.stream()
-                        .map(article -> {
-                            ShortArticle shortArticle = new ShortArticle();
-                            shortArticle.setId(article.getId());
-                            shortArticle.setMainPicture(article.getMainPicture());
-                            shortArticle.setCreatedAt(article.getCreatedAt());
-                            shortArticle.setDescription(article.getDescription());
-                            shortArticle.setTags(article.getTags().stream()
-                                    .map(TagDto::fromEntity)
-                                    .collect(Collectors.toList()));
-                            return shortArticle;
-                        })
+                        .map(ShortArticle::fromEntity)
                         .collect(Collectors.toList()),
                 pageable,
                 total
