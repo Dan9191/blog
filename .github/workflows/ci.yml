@@ -35,7 +35,7 @@ jobs:
 
       # Сохраняем jar как артефакт для других job
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-libs
           path: build/libs/*.jar
@@ -69,7 +69,7 @@ jobs:
 
       # скачиваем собранный jar из job build
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-libs
           path: build/libs
