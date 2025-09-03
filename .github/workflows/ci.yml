@@ -31,7 +31,14 @@ jobs:
 
       # билд проекта
       - name: Build project
-        run: ./gradlew build
+        run: ./gradlew build -x test
+
+      # Сохраняем jar как артефакт для других job
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-libs
+          path: build/libs/*.jar
 
   test:
     runs-on: ubuntu-latest
@@ -59,6 +66,13 @@ jobs:
       packages: write   # нужно, чтобы пушить в GHCR
     steps:
       - uses: actions/checkout@v3
+
+      # скачиваем собранный jar из job build
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-libs
+          path: build/libs
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
