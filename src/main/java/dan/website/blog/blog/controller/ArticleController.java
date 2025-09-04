@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/articles")
+@RequestMapping("/v1/articles")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000")
 public class ArticleController {
