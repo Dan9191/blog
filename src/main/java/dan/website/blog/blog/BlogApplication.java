@@ -2,7 +2,9 @@ package dan.website.blog.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
+@ConfigurationPropertiesScan("dan.website.blog.blog.config")
 @SpringBootApplication
 public class BlogApplication {
 
